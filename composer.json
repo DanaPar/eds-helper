@@ -1,0 +1,13 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Stock\\": "src",
+            "Currency\\": "src"
+        }
+    },
+
+    "require": {
+        "ext-pdo": "*",
+        "ext-mbstring": "*"
+    }
+}
