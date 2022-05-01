@@ -2,7 +2,6 @@
 
 namespace Currency;
 
-
 use SimpleXMLElement;
 
 class Xml
@@ -10,7 +9,7 @@ class Xml
  private string $date;
  private accessBankLV $url;
 
- public function __construct($date){
+ public function __construct(string $date){
      $this->date = $date;
      $this->url = new accessBankLV($this->date);
  }

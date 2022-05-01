@@ -7,7 +7,7 @@ class accessBankLV
     private string $date;
 
 
-    public function __construct($date){
+    public function __construct(string $date){
         $this->date = $date;
     }
 //gets date input and returns link for xml file from bank.lv
