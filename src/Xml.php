@@ -3,6 +3,8 @@
 namespace Currency;
 
 
+use SimpleXMLElement;
+
 class Xml
 {
  private string $date;
@@ -13,7 +15,7 @@ class Xml
      $this->url = new accessBankLV($this->date);
  }
 
- public function getXml(){
+ public function getXml(): SimpleXMLElement {
      return simplexml_load_file($this->url->link());
  }
 
