@@ -6,11 +6,11 @@ use PDOException;
 
 class DividendRepository
 {
-    private databaseConnection $dbh;
+    private DatabaseConnection $dbh;
 
 
     public function __construct(){
-        $this->dbh = new databaseConnection();
+        $this->dbh = new DatabaseConnection();
     }
 
     public function getDividends($dateFrom, $dateTo): array{
@@ -21,7 +21,7 @@ class DividendRepository
             $stmt = $conn->query("SELECT * FROM dividend WHERE date > '$dateFrom' AND date < '$dateTo' ");
 
             foreach ($stmt->fetchAll() as $row) {
-                $data[$row["id"]] = new dividend( $row["ticker"], $row["date"], $row["dividend"], $row["tax"], $row["received"], $row["currency"]);
+                $data[$row["id"]] = new Dividend( $row["ticker"], $row["date"], $row["dividend"], $row["tax"], $row["received"], $row["currency"]);
             }
             return $data;
 

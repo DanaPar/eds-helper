@@ -18,7 +18,8 @@ $date2 =$_POST["date2"];
     foreach ($data as $dividend){
         echo $dividend->getTicker() . " " . $dividend->getDate() . " " . $dividend->getDividend() . " " . $dividend->getCurrency();
         $rate = new Rate(date("Ymd", strtotime($dividend->getDate())), $dividend->getCurrency());
-        echo $rate->getRate();
+        echo " ". $rate->getRate();
+        echo "<br>";
     }
 
 

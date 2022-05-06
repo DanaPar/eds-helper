@@ -7,11 +7,11 @@ use SimpleXMLElement;
 class Xml
 {
  private string $date;
- private accessBankLV $url;
+ private AccessBankLV $url;
 
  public function __construct(string $date){
      $this->date = $date;
-     $this->url = new accessBankLV($this->date);
+     $this->url = new AccessBankLV($this->date);
  }
 
  public function getXml(): SimpleXMLElement {

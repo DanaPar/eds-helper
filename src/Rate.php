@@ -22,12 +22,15 @@ class Rate
 
     public function getRate(): float
     {
+        if ($this->currency === "EUR"){
+            $this->rate = 1.00;
+        } else {
+            foreach ($this->xml->getXml()->Currencies->Currency as $currency) {
+                if ($currency->ID == $this->currency) {
+                    $this->rate = (float)$currency->Rate;
+                }
 
-        foreach ($this->xml->getXml()->Currencies->Currency as $currency){
-            if ($currency->ID == $this->currency){
-                 $this->rate = (float)$currency->Rate;
             }
-
         }
         return $this->rate;
     }
