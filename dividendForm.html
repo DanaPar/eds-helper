@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Dividend record</title>
+</head>
+<body>
+<h1>Add dividend</h1>
+<form  action="dividend.php" method="post">
+    <label for="ticker">Ticker:</label>
+    <input type="text" name="ticker" id="ticker" required>
+    <br><br>
+    <label for="date">Date:</label>
+    <input type="date" name="date" id="date" required>
+    <br><br>
+    <label for="dividend">Dividend:</label>
+    <input type="number" name ="dividend" id="dividend" required step="any">
+    <br><br>
+    <label for="tax">Withholding Tax:</label>
+    <input type="number" name="tax" id="tax" step="any">
+    <br><br>
+    <label for="received">Amount received:</label>
+    <input type="number" name="received" id="received" required step="any">
+    <br><br>
+    <label for="currency">Currency:</label>
+    <input type="text" name="currency" id="currency" required>
+    <br><br>
+    <input type="submit" name="submit">
+</form>
+</body>
+</html>
