@@ -13,7 +13,7 @@ class DividendRepository
         $this->dbh = new DatabaseConnection();
     }
 
-    public function getDividends($dateFrom, $dateTo): array{
+    public function getDividends(string $dateFrom, string $dateTo): array{
         try{
 
             $data = array();

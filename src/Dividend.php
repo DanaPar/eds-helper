@@ -2,7 +2,7 @@
 
 namespace Currency;
 
-class dividend
+class Dividend
 {
     private string $ticker;
     private string $date;
@@ -10,8 +10,9 @@ class dividend
     private string $tax;
     private float $received;
     private string $currency;
+    private float $rate;
 
-    public function __construct( $ticker, $date, $dividend, $tax, $received, $currency)
+    public function __construct(string $ticker, string $date, float $dividend, string $tax, float $received, string $currency)
     {
         $this->ticker = $ticker;
         $this->date = $date;
@@ -21,6 +22,16 @@ class dividend
         $this->currency = $currency;
     }
 
+
+    public function setRate(float $rate): void
+    {
+        $this->rate = $rate;
+    }
+
+    public function getRate(): float
+    {
+        return $this->rate;
+    }
 
     public function getTicker(): string
     {

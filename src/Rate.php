@@ -32,6 +32,7 @@ class Rate
 
             }
         }
+
         return $this->rate;
     }
 }
