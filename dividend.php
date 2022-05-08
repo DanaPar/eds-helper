@@ -13,5 +13,7 @@ $currency = $_POST["currency"];
 
 $entry = new Dividend($ticker, $date, $dividend, $tax, $received, $currency);
 
-
+$validator = new DividendValidator();
+$validator->validate($entry);
+echo $entry->getTicker();
 
