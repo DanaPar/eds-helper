@@ -42,7 +42,7 @@ class DividendRepository
             $ticker = $new_entry->getTicker();
             $date = $new_entry->getDate();
             $dividend = $new_entry->getDividend();
-            $tax = $new_entry->getTax();
+            $tax = (float)$new_entry->getTax();
             $received = $new_entry->getReceived();
             $currency = $new_entry->getCurrency();
 
