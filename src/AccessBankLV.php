@@ -2,7 +2,7 @@
 
 namespace Currency;
 
-class accessBankLV
+class AccessBankLV
 {
     private string $date;
 

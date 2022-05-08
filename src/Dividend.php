@@ -33,6 +33,16 @@ class Dividend
         return $this->rate;
     }
 
+    public function setTicker(string $ticker): void
+    {
+        $this->ticker = $ticker;
+    }
+
+    public function setCurrency(string $currency): void
+    {
+        $this->currency = $currency;
+    }
+
     public function getTicker(): string
     {
         return $this->ticker;
