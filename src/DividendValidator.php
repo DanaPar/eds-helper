@@ -11,7 +11,6 @@ class DividendValidator
         }
     }
 
-    //Changes data to uppercase
     private function upperCase(string $data): string
     {
         return strtoupper($data);
@@ -22,10 +21,11 @@ class DividendValidator
         $this->validateFields($dividend->getTicker());
         $dividend->setTicker($this->upperCase($dividend->getTicker()));
     }
-//checks if date is past or today, if not then user must change  date
+
     private function validateDate(Dividend $dividend): void
     {
         $this->validateFields($dividend->getDate());
+        //checks if date is past or today, if not then user must change  date
         if($dividend->getDate() > date("Y-m-d")){
             die("check date! Date can't be in future");
         }
@@ -36,18 +36,20 @@ class DividendValidator
         $this->validateFields($dividend->getDividend());
     }
 
-    //tax can't be bigger than dividend
-    private function validateTax(Dividend $dividend)
+
+    private function validateTax(Dividend $dividend): void
     {
+        //tax can't be bigger than dividend
         if($dividend->getTax() >= $dividend->getDividend()){
             die("Check again. Looks like you entered incorrect withholding tax");
         }
     }
-//checks if true -> dividend-tax=received
+
     private function validateReceived(Dividend $dividend): void
     {
         $this->validateFields($dividend->getReceived());
-        if(($dividend->getDividend() - $dividend->getTax()) != $dividend->getReceived()){
+        //checks if true -> dividend-tax=received
+        if(($dividend->getDividend() - (float)$dividend->getTax()) != $dividend->getReceived()){
             die("Check again. Looks like you entered incorrect dividend, tax or received amount values");
         }
     }
