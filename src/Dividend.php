@@ -22,7 +22,7 @@ class Dividend
         $this->currency = $currency;
     }
 
-
+    //setting exchange rate
     public function setRate(float $rate): void
     {
         $this->rate = $rate;
