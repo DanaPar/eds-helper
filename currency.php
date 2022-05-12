@@ -5,6 +5,7 @@ use Currency\Dividend;
 use Currency\DividendRepository;
 use Currency\LocalCurrency;
 use Currency\Rate;
+use Currency\DividendService;
 
 
 $date1 = $_POST["date1"];
@@ -18,23 +19,27 @@ echo "Dividends received between $date1 and $date2:" . "<br>";
     $rows = count($data);
     echo "There is " . $rows. " rows";
     echo "<br>";
-/*
-    foreach ($data as $dividend){
-        echo $dividend->getTicker() . " " . $dividend->getDate() . " " . $dividend->getDividend() . " " . $dividend->getReceived() . " ". $dividend->getCurrency();
-        $rate = new Rate(date("Ymd", strtotime($dividend->getDate())), $dividend->getCurrency());
-        echo " ". $rate->getRate();
-        echo " " . number_format($dividend->getReceived() / $rate->getRate(), 2) . "EUR";
-        echo "<br>";
-    }
-*/
 
-foreach ($data as $dividend){
-    $rate = new Rate(date("Ymd", strtotime($dividend->getDate())), $dividend->getCurrency());
-    $dividendRecord = new Dividend($dividend->getTicker(), $dividend->getDate(), $dividend->getDividend(), $dividend->getTax(), $dividend->getReceived(), $dividend->getCurrency());
-    $dividendRecord->setRate($rate->getRate());
-    echo $dividendRecord->getDate() . " " . $dividendRecord->getTicker() ." " . $dividendRecord->getRate() .  " ";
-    echo LocalCurrency::toLocal($dividendRecord->getReceived(), $dividendRecord->getRate()) . "<br>";
+
+$service = new DividendService();
+$service->returnDividend($date1, $date2);
+
+foreach ($service->returnDividend($date1, $date2) as $rate){
+   echo $rate->getTicker() . " ";
+   echo $rate->getDate() . " ";
+   echo $rate->getReceived() . " ";
+   echo $rate->getRate() . " ";
+   echo LocalCurrency::toLocal($rate->getReceived(), $rate->getRate());
+
+   echo "<br>";
 }
+
+
+
+
+
+
+
 
 
 

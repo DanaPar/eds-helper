@@ -59,8 +59,18 @@ class DividendValidator
         $this->validateFields($dividend->getCurrency());
         $dividend->setCurrency($this->upperCase($dividend->getCurrency()));
     }
+    //checks if valid date range
+    public function validateDateRange(string $date1, string $date2): void
+    {
+        if($date1 > $date2){
+            die("wrong date range");
+        } elseif($date1 > date("Y-m-d"))
+        {
+            die("this is not time machine, you cannot get future records");
+        }
+    }
 
-    public function validate(Dividend $dividend)
+    public function validate(Dividend $dividend): void
     {
         $this->validateTicker($dividend);
         $this->validateDate($dividend);
