@@ -19,7 +19,7 @@ class DividendService
         $this->repository->saveDividend($entry);
     }
 
-
+    /** @return Dividend[] */
     public function returnDividend(string $date1, string $date2): array {
 
         $this->validator->validateDateRange($date1, $date2);
